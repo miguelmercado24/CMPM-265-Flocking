@@ -153,11 +153,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Flock.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pvector.cpp" />
     <ClCompile Include="Vehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Flock.h" />
     <ClInclude Include="Pvector.h" />
     <ClInclude Include="Vehicle.h" />
   </ItemGroup>

@@ -3,6 +3,7 @@
 //Flocking
 #define _USE_MATH_DEFINES
 #include"Pvector.h"
+
 // Sets values of x and y for Pvector
 
 void Pvector::set(float i, float o)

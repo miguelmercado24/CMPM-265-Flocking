@@ -24,12 +24,18 @@
     <ClCompile Include="Pvector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Flock.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vehicle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Pvector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Flock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

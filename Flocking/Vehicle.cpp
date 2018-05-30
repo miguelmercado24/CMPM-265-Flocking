@@ -1,8 +1,10 @@
 // Miguel Ocana Mercado
 //CMPM 265
 //Flocking
+#define _USE_MATH_DEFINES
 #include "Vehicle.h"
-
+#include <cmath>
+#include <vector>
 
 VideoMode desktopTemp = VideoMode::getDesktopMode();
 const int window_height = desktopTemp.height;
@@ -192,31 +194,56 @@ Pvector Vehicle::Cohesion(vector<Vehicle> boids)
 	{
 		float d = position.distance(boids[i].position);
 
-		if (boids[i].predatorStatus) neighbordist = 15;
-
-
-
 		if ((d > 0) && (d < neighbordist)) 
 		{
-			sum.addVector(boids[i].location);
+			sum.addVector(boids[i].position);
 			count++;
 		}
 
 	}
 
-	if (count > 0) {
-
+	if (count > 0) 
+	{
 		sum.divScalar(count);
-
-		return seek(sum);
+		return Seek(sum);
 
 	}
 
-	else {
-
+	else 
+	{
 		Pvector temp(0, 0);
-
 		return temp;
-
 	}
+}
+
+float Vehicle::getDesSep() const { return desSep; }
+
+float Vehicle::getDesAli() const { return desAli; }
+
+float Vehicle::getDesCoh() const { return desCoh; }
+
+float Vehicle::getSepW() const { return SepW; }
+
+float Vehicle::getAliW() const { return AliW; }
+
+float Vehicle::getCohW() const { return CohW; }
+
+void Vehicle::setDesSep(float x) { desSep += x; }
+
+void Vehicle::setDesAli(float x) { desAli += x; }
+
+void Vehicle::setDesCoh(float x) { desCoh += x; }
+
+void Vehicle::setSepW(float x) { SepW += x; }
+
+void Vehicle::setAliW(float x) { AliW += x; }
+
+void Vehicle::setCohW(float x) { CohW += x; }
+
+float Vehicle::getAngle(Pvector v) const
+{
+	// From the definition of the dot product
+
+	float angle = static_cast<float>(atan2(v.x, -v.y) * 180 / M_PI);
+	return angle;
 }

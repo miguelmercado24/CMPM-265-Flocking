@@ -58,6 +58,8 @@ public:
 	void setAliW(float x);
 	void setCohW(float x);
 
+	float getAngle(Pvector v) const;
+
 
 private:
 

@@ -2,11 +2,11 @@
 //CMPM 265
 //Flocking
 
-#include"Vehicle.h"
+#include"Flock.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
+	RenderWindow window(sf::VideoMode(800, 600), "CMPM 25 Flocking!");
 
 	sf::CircleShape shape(100.f);
 	shape.setFillColor(sf::Color::Green);
