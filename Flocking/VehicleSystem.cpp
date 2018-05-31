@@ -27,53 +27,53 @@ void VehicleSystem::Run()
 
 	for (int i = 0; i < BOID_AMOUNT; i++) 
 		{
-			createBoid(_window_width / 2, _window_height / 2,Color::Green, Color::Blue);
+			createBoid(_window_width / 2, _window_height / 2, Color::Red, Color::Yellow);
 		}
 
 	//Whole block of text can probably simplified in a function as well in order to remove redundancy
 
 	Font font;
-	font.loadFromFile("consola.ttf");
+	font.loadFromFile("Roboto-Regular.ttf");
 
 	Text fpsText("Frames per Second: ", font);
 	fpsText.setFillColor(Color::White);
-	fpsText.setCharacterSize(12);
-	fpsText.setPosition(_window_width - 162, 0);
+	fpsText.setCharacterSize(17);
+	fpsText.setPosition(_window_width - 200, 0);
 
 	Text vehicleText("Total Boid Count: " + to_string(flock.getSize()), font);
 	vehicleText.setFillColor(Color::White);
-	vehicleText.setCharacterSize(12);
-	vehicleText.setPosition(_window_width - 155, 36);
+	vehicleText.setCharacterSize(17);
+	vehicleText.setPosition(_window_width - 200, 45);
 
 	Text dSepText("Separation Amount: " + to_string(flock.getBoid(0).getDesSep()), font);
 	dSepText.setFillColor(Color::White);
-	dSepText.setCharacterSize(12);
-	dSepText.setPosition(_window_width - 162, 60);
+	dSepText.setCharacterSize(17);
+	dSepText.setPosition(_window_width - 200, 60);
 
 	Text dAliText("Alignment Amount: " + to_string(flock.getBoid(0).getDesAli()), font);
 	dAliText.setFillColor(Color::White);
-	dAliText.setCharacterSize(12);
-	dAliText.setPosition(_window_width - 155, 72);
+	dAliText.setCharacterSize(17);
+	dAliText.setPosition(_window_width - 200, 75);
 
 	Text dCohText("Cohesion Amount: " + to_string(flock.getBoid(0).getDesCoh()), font);
 	dCohText.setFillColor(Color::White);
-	dCohText.setCharacterSize(12);
-	dCohText.setPosition(_window_width - 148, 84);
+	dCohText.setCharacterSize(17);
+	dCohText.setPosition(_window_width - 200, 90);
 
 	Text dSepWText("Separation Weight: " + to_string(flock.getBoid(0).getSepW()), font);
 	dSepWText.setFillColor(Color::White);
-	dSepWText.setCharacterSize(12);
-	dSepWText.setPosition(_window_width - 162, 108);
+	dSepWText.setCharacterSize(17);
+	dSepWText.setPosition(_window_width - 200, 135);
 
 	Text dAliWText("Alignment Weight: " + to_string(flock.getBoid(0).getAliW()), font);
 	dAliWText.setFillColor(Color::White);
-	dAliWText.setCharacterSize(12);
-	dAliWText.setPosition(_window_width - 155, 120);
+	dAliWText.setCharacterSize(17);
+	dAliWText.setPosition(_window_width - 200, 150);
 
 	Text dCohWText("Cohesion Weight: " + to_string(flock.getBoid(0).getCohW()), font);
 	dCohWText.setFillColor(Color::White);
-	dCohWText.setCharacterSize(12);
-	dCohWText.setPosition(_window_width - 148, 132);
+	dCohWText.setCharacterSize(17);
+	dCohWText.setPosition(_window_width - 200, 165);
 
 
 	sf::Clock clock;
@@ -105,11 +105,11 @@ void VehicleSystem::InputManager()
 			_window.close();
 		}
 
-		// Event to create new "prey" boids
+		// Creating new boids
 
 		if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space) 
 		{
-			createBoid(rand() % _window_width, rand() % _window_height, Color::Green, Color::Blue);
+			createBoid(rand() % _window_width, rand() % _window_height, Color::Red, Color::Yellow);
 		}
 
 		//Events for modifying the values in Boids
@@ -199,7 +199,7 @@ void VehicleSystem::InputManager()
 
 
 		//Closing the window
-		if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F5)
+		if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R)
 		{
 			_window.close();
 			VehicleSystem temp;;
@@ -223,7 +223,8 @@ void VehicleSystem::InputManager()
 
 void VehicleSystem::createBoid(float x, float y, Color fillColor, Color outlineColor)
 {
-	int size = rand() % 10 - 2;
+	//int size = rand() % 10 - 2;
+	int size = 10;
 	Vehicle b (x, y);
 	sf::CircleShape boidShape(size, 3);
 	boidShape.setPosition(x, y);
@@ -250,8 +251,8 @@ Text dSepText, Text dAliText, Text dCohText, Text dSepWText,Text dAliWText,Text 
 
 	//Updating and drawing text can possibly be put in it's own function as well
 
-	fpsText.setString("Frames per Second: " + to_string(int(fps + 0.5)));
-	_window.draw(fpsText);
+	/*fpsText.setString("Frames per Second: " + to_string(int(fps + 0.5)));
+	_window.draw(fpsText);*/
 
 	boidText.setString("Total Boid Count: " + to_string(flock.getSize()));
 	_window.draw(boidText);
