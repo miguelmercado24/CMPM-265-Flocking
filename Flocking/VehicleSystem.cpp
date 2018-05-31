@@ -3,7 +3,7 @@
 #include "SFML/Window.hpp"
 #include "SFML/Graphics.hpp"
 
-#define BOID_AMOUNT 50
+#define BOID_AMOUNT 75
 
 using namespace sf;
 
@@ -27,7 +27,7 @@ void VehicleSystem::Run()
 
 	for (int i = 0; i < BOID_AMOUNT; i++) 
 		{
-			createBoid(_window_width / 2, _window_height / 2, Color::Red, Color::Yellow);
+			createBoid(_window_width / 2, _window_height / 2, Color::Blue, Color::Green);
 		}
 
 	//Whole block of text can probably simplified in a function as well in order to remove redundancy
@@ -226,15 +226,37 @@ void VehicleSystem::createBoid(float x, float y, Color fillColor, Color outlineC
 	//int size = rand() % 10 - 2;
 	int size = 10;
 	Vehicle b (x, y);
-	sf::CircleShape boidShape(size, 3);
+
+	//Simple equilateral triangle
+	CircleShape boidShape(size, 3);
 	boidShape.setPosition(x, y);
 	boidShape.setFillColor(fillColor);
 	boidShape.setOutlineColor(outlineColor);
 	boidShape.setOutlineThickness(.5);
+	boidShape.setScale(1, 2);
+
+	//More complex triangle
+	ConvexShape triangle;
+	triangle.setPointCount(3);
+	/*triangle.setPoint(0,Vector2f(x,y));
+	triangle.setPoint(1, Vector2f((x + 10), (y - 50)));
+	triangle.setPoint(2, Vector2f((x - 10), (y - 50)));*/
+
+	triangle.setPoint(0, Vector2f((x + 10), (y + 25)));
+	triangle.setPoint(1, Vector2f(x, (y - 10)));
+	triangle.setPoint(2, Vector2f((x - 10), (y + 25)));
+
+	triangle.setFillColor(fillColor);
+	triangle.setOutlineColor(outlineColor);
+	triangle.setOutlineThickness(.5);
 
 	flock.addBoid(b);
-	boidShapes.push_back(boidShape);
 
+	//This one uses isoceles with complex shape
+	//boidShapes.push_back(triangle);
+
+	//This one uses equilateral triangles with Circle shape
+	boidShapes.push_back(boidShape);
 	// New Shape is drawn
 
 	_window.draw(boidShapes[boidShapes.size() - 1]);

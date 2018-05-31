@@ -16,7 +16,8 @@ private:
 	Flock flock;
 	float boidsSize;
 
-	vector<sf::CircleShape> boidShapes;
+	vector<sf::CircleShape> boidShapes;     //This one needs scale adjustment for Isoceles triangles
+	//vector<sf::ConvexShape> boidShapes;   //Triangles using convex shape
 
 	void Render(Text text, float fps, Text text2, Text text3, Text text4,
 

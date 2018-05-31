@@ -21,7 +21,7 @@ Vehicle::Vehicle(float x, float y)
 	maxSpeed = 2;
 	maxForce = 0.03;
 
-	desSep = 25;
+	desSep = 22;
 	desAli = 70;
 	desCoh = 25;
 	SepW = 1.5;
