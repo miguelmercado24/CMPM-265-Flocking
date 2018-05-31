@@ -208,7 +208,7 @@ void VehicleSystem::InputManager()
 	}
 
 
-	//Adding a Vehicle boid if mouse is clicked.
+	//Adding a Vehicle boid if mouse is Left clicked.
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) 
 	{
@@ -217,8 +217,16 @@ void VehicleSystem::InputManager()
 		sf::Vector2i mouseCoords = sf::Mouse::getPosition(_window);
 		createBoid(mouseCoords.x, mouseCoords.y, Color::Red, Color::Yellow);
 	}
-}
 
+
+	//Removing a Vehicle boid if mouse is Right Clickeds
+	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Down)
+	{
+		flock.removeBoid();
+		boidShapes.pop_back();
+		//boidShapes[boidShapes.size() - 1];
+	}
+}
 
 
 void VehicleSystem::createBoid(float x, float y, Color fillColor, Color outlineColor)

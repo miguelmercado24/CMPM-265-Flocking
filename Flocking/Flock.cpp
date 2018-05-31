@@ -18,6 +18,18 @@ Vehicle Flock::getBoid(int i)
 void Flock::addBoid(Vehicle b) 
 { 
 	flock.push_back(b); 
+	printf("Added a new boid");
+}
+
+void Flock::removeBoid()
+{
+	//printf("Remove a boid" + flock.size());
+	if (flock.size() <= 0)
+	{
+		return;
+	}
+	flock.pop_back();
+	
 }
 
 // Runs the run function for every boid in the flock checking against the flock itself. Which in turn applies all the rules to the flock.

@@ -22,6 +22,7 @@ public:
 	// Mutator Functions
 
 	void addBoid(Vehicle b);
+	void removeBoid();
 	void flocking();
 
 	//For accessing and modifying values
